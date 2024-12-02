@@ -10,7 +10,7 @@ response = requests.get(meny)
 soup = BeautifulSoup(response.text, 'html.parser')
 kres = soup.find('div', class_='siteorigin-widget-tinymce textwidget')
 
-text = kres.get_text();
+text = kres.get_text()
 
 # Splits the menus from the text (very ugly!!!)
 prices = text.split("GREENS:")[0]
@@ -78,11 +78,24 @@ for img in nDivImgs:
             nordicAllergies += allergy.capitalize() + " "
             
 
-
-
+print()
 print("Greens: " + greensMenu)
 print("Greens Allergies: " + greenAllergies.strip())
 print("Street: " + streetMenu)
 print("Street Allergies: " + streetAllergies.strip())
 print("Nordic: " + nordicMenu)
 print("Nordic Allergies: " + nordicAllergies.strip())
+print()
+
+print("Enter the allergen to filter by allergies (milk/gluten/eggs/sulphites/celery) : ")
+allergen = input()
+allergen = allergen.strip().lower()
+
+print()
+
+if allergen not in greenAllergies.lower().split():
+    print("Greens: " + greensMenu)
+if allergen not in streetAllergies.lower().split():
+    print("Street: " + streetMenu)
+if allergen not in nordicAllergies.lower().split():
+    print("Nordic: " + nordicMenu)
