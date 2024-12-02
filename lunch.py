@@ -93,9 +93,16 @@ allergen = allergen.strip().lower()
 
 print()
 
+counter = 0
 if allergen not in greenAllergies.lower().split():
     print("Greens: " + greensMenu)
+    counter += 1
 if allergen not in streetAllergies.lower().split():
     print("Street: " + streetMenu)
+    counter += 1
 if allergen not in nordicAllergies.lower().split():
     print("Nordic: " + nordicMenu)
+    counter += 1
+
+if counter == 0:
+    print("No available food for you today :(  Try your luck at Store! ")
