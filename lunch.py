@@ -1,5 +1,5 @@
 import requests
-import json
+from colorama import Fore
 from bs4 import BeautifulSoup
 
 
@@ -79,12 +79,12 @@ for img in nDivImgs:
             
 
 print()
-print("Greens: " + greensMenu)
-print("Greens Allergies: " + greenAllergies.strip())
-print("Street: " + streetMenu)
-print("Street Allergies: " + streetAllergies.strip())
-print("Nordic: " + nordicMenu)
-print("Nordic Allergies: " + nordicAllergies.strip())
+print(Fore.GREEN + "Greens: " +  Fore.BLACK + greensMenu)
+print(Fore.GREEN + "Allergies: " +  Fore.BLACK + greenAllergies.strip())
+print(Fore.RED + "Street: " +  Fore.BLACK + streetMenu)
+print(Fore.RED + "Allergies: " + Fore.BLACK + streetAllergies.strip())
+print(Fore.BLUE + "Nordic: " +  Fore.BLACK + nordicMenu)
+print(Fore.BLUE + "Allergies: " +  Fore.BLACK + nordicAllergies.strip())
 print()
 
 print("Enter the allergen to filter by allergies (milk/gluten/eggs/sulphites/celery) : ")
@@ -95,14 +95,16 @@ print()
 
 counter = 0
 if allergen not in greenAllergies.lower().split():
-    print("Greens: " + greensMenu)
+    print(Fore.GREEN + "Greens: " + Fore.BLACK + greensMenu)
     counter += 1
 if allergen not in streetAllergies.lower().split():
-    print("Street: " + streetMenu)
+    print(Fore.RED + "Street: " + Fore.BLACK + streetMenu)
     counter += 1
 if allergen not in nordicAllergies.lower().split():
-    print("Nordic: " + nordicMenu)
+    print(Fore.BLUE + "Nordic: " + Fore.BLACK + nordicMenu)
     counter += 1
 
 if counter == 0:
-    print("No available food for you today :(  Try your luck at Store! ")
+    print("No available food for you today :( Try your luck at Store!")
+
+print()
